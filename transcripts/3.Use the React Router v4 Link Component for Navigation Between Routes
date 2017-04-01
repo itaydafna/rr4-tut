@@ -1,0 +1,17 @@
+Use the React Router v4 Link Component for Navigation Between Routes
+
+If you’ve created several Routes within your application, you will also want to be able to navigate between them. React Router supplies a Link component that you will use to make this happen.
+
+We can create navigation elements for a router by bringing in the component from the React Router library. You can see here I've got three paths -- one for Home, About, and Contact. We're here on the Home path. If I go to /about, we get our About, and likewise for Contact.
+
+To use the component, I'm going to go ahead and create a new component here called . I'm going to wrap everything up in a tag. We're going to go ahead and put our component on the page. This works a lot like an anchor tag with the exception that rather than an href we have a to prop.
+
+I'm going to say to/, and then inside of that component I'm going to go ahead and give it some text that says Home. We can add our component to our app component. Now we've got our component. We click on Home, and we've got our Home component.
+
+I'm going to go ahead and add another one of these for our About page. This time, rater than passing in a string, we're going to interpolate an object. There's a few things we can do here, but the to prop becomes pathname, so we'll set this to /about, save that. Now we've got an About link.
+
+We're going to go ahead and add one more for our Contact page, save that. Now we've got our three links -- Home, About, and Contact.
+
+One other thing we can do here is called replace. This gives us a little control over how we're managing our browser history. By using replace here, if I go to Home and then About, and I click Back, it's going to take me to Home.
+
+If I go to Home, About, and then Contact, you might think that it's going to take me to About, but what we've done by adding this replace modifier is we've replaced the previous URL with the new URL. When I hit Back, it's going to go all the way to Home.
