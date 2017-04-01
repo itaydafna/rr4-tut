@@ -1,4 +1,11 @@
 a {
-    display: inline-block;
-    margin: 4px;
+    margin: 5px;
+}
+
+a, a:visited{
+    color: blue;
+}
+
+a.active {
+    color: red;
 }
