@@ -1,0 +1,19 @@
+Render Multiple Components for the Same Route in React Router v4
+
+React Router v4 allows us to render Routes as components wherever we like in our components. This can provide some interesting use cases for creating dynamic routes on our applications.
+
+I've defined a single route in our application that takes in a forward slash any string and parameterizes that string as a parameter called page. Here on our root URL that's not rendering, if I go to forward slash home we see home. If I go to forward slash about, we see about. If I wanted to do something like wrap this guy in a class of header, just take this move it right inside there. Everything is going to work fine.
+
+I'm going to jump over to our CSS and create that header class, so it's just going to be a border of one pixel solid we'll say blue. I'm going to create another one while I'm in here for content. We'll give that a border of red.
+
+Save that and we can see that our about route is rendering in the div with a class name of header, and so it's got the blue outline. We're going to copy all this.
+
+I'm going to create another one with our class name of content. The route configuration will be identical. We'll put this one in a paragraph tag. Right after it we'll say content. Then for our header one right after the page value we'll say header.
+
+Now we can see that our about header is in the header container and about content is in the content container. If we go to home we get the same. It doesn't matter, the order of these items, so if I want to move this content above the header that's going to work just fine. Now our content is above the header.
+
+We can take this a little bit further. I'm going to create a function for header. It will take in the match data. Then we'll simply return all of this header content, including the route. We've taken the route out of our app component and put it into our header component. We'll do the same thing for a content component.
+
+We'll take in our match data and we'll simply grab all this content JSX and drop it into our content component. Here in our app we're simply going to output header and content, each containing its own route. We can see again everything is working just fine because in React Router four routes are simply components. We've just got components rendering other components.
+
+It doesn't even matter that these items are in our app component nested in the router. We could actually take them and throw them up here in our links component. We can see everything is working as expected.
