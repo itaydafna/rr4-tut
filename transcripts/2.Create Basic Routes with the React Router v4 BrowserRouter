@@ -1,0 +1,33 @@
+Create Basic Routes with the React Router v4 BrowserRouter
+
+React Router 4 has several routers built in for different purposes. The primary one you will use for building web applications is the BrowserRouter. In this lesson you will import the BrowserRouter and create some basic Route components.
+
+To get started with our first router, I'm going to ahead and import React from react-here in our app.js. I'm going to import react-router-dom. From that, I'm going to import browser router, I'm going to go ahead and label that router just to keep things simple, as well as route. I'm going to set up a stateless functional component here called app. When we're done, we're going to ahead and export that by default.
+
+Here in our component, we're going to add our router component. To create our routes, we simply add a route component nested inside of that. The first prop that we can set is path. This is the path, the URL that we want to render something at. The simplest way to render something at this path is to use the component prop, where we simply interpolate another component.
+
+I'll go ahead and create this home component now. Stateless functional component called Home, and we'll simply return in H1 that says Home. Save that and over here on the right, we can see that at our route URL, we are in fact rendering this home component.
+
+I'm going to ahead and set up another one of these. We're actually going to run into a couple of problems, but just to illustrate this. At the forward slash about route, I also want to render this home component. When I load this up in the browser, we are going to get an error, and that error is in fact that a router component may only have one child element. To solve that, we're simply going to wrap everything up in a div. We're back on track.
+
+Here is our route URL rendering the home component. However, if we go to forward slash about, we're going to see that we're rendering the home component twice. That is because each of these route components is firing. Essentially, it's because the regular expression engine that React router uses considers this forward slash route, the same as this forward slash about route.
+
+The way we can solve this is with a qualifier on our path. In this case, we're going to use the exact qualifier, so that means that the path must match exactly. Go and save that. Here at our about route, we are rendering the single home component. If I go to the route URL, we also have our single home component.
+
+It's important to note here that the exact qualifier on our path, doesn't actually care about this single forward slash, or any trailing forward slashes. There's another qualifier that does care about that and that's called Strict. If I take Strict, and I add it to our path of forward slash about forward slash, I'm going to save that.
+
+I'm going to go to forward slash about. We're going to see that nothing renders, because the Strict qualifier on this path requires that the forward slash or the trailing flash to be there. If I go to forward slash about, and a trailing forward slash on that, we're going to see our component is rendered.
+
+I'm going to go and kill off this strict and this trailing slash. We're going to look a way to render a component here without the component prop. That is the render prop. We render into a function. Here's our function. We just return whatever other component or JSX we might want to run here. I'm just going to create an H1 and say about, save that. We can say we've got our about component at the about route. We go back to the route URL. We have our home component.
+
+I'm going to comment this out. We're going to ahead and set up a -- actually we're going to set up a very similar route, so let me just copy this guy. Rather than doing render, we're going to use something called children. This is a third way that we can render something at a route. It's called children. I'm just going to have the exact same context here with this function that's returning or about and then H1. Save that.
+
+We're here at the route URL. You can see that the home path is firing, but so is this about path. That's because children, as a method of the route, is always going to run no matter what, whether there's a match or not. What we can do to get at whether or not we want this route to match the current route, we can extract a bit of information that's passed into all of these functions and components. We're going to grab the match data.
+
+We're simply going to say match, and go ahead and render the about H1 that we have there. Let me just clean this up a little bit. We're going to run that. You can see at the route URL, we just have our home component. If I go to the about URL, we just have our about component.
+
+This match data that I pulled out of the children method, and could have pulled out of the render method and also gets passed into any component is information that's being passed to us from React router. To get a look at that really quick, I'm just going to go ahead and set up some props here on our home component. We'll get rid of that implicit return. I'm going to cancel log out the props here. We'll return our JSX. Save that, everything's going to work just fine.
+
+I'm going to come over here to our route URL. We can see that all of this information is being passed in from React router. I'm going to go down the entire laundry list of items here, but two key ones that we're definitely going to be looking at a lot, and that you'll find very useful, the first one is match.
+
+If this object exists, then that means that as we've specified it, the route considers our current URL a match. Location will actually come through in a number of instances and just carries over some of the same information we can get from match if it exists, and some additional information that we'll be able to explore later.
