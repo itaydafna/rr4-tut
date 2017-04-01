@@ -1,0 +1,31 @@
+Redirect to Another Page with React Router v4
+
+Overriding a browser's current location without breaking the back button or causing an infinite redirect can be tricky sometimes. In this lesson we'll learn how React Router v4 allows us to easily achieve a redirect without getting bogged down in browser history.
+
+When we need to redirect from one route to another we can use the redirect component from React Router.
+
+We're on the page. I've got three links set up, one to our root URL, one to forward slash old, and one to forward slash new. I've got a route set up for our root URL as well as our path of forward slash new, here in the browser.
+
+If I go to home everything is fine. If I go to new everything is fine. If I go to old of course I don't have a route set up for that and nothing is going to render.
+
+Here we can use a redirect component. We're going to give it a from prop, which is going to represent our old path. Then we're going to give it a two prop, which is going to represent our new path.
+
+I'm going to save this. This isn't going to run exactly as we expect. There's home. There's new. When I go to old it's still rendering the same way it was. That's because when we use it in this fashion directly in a router, we need to go ahead and wrap these guys in a switch component.
+
+Now when I go to home and then I go to old, you can see it's redirected me to new. If I hit back, it takes me to home. It's replacing that URL in our browser's history.
+
+A more common use case for redirect is to override an existing route. Here I'm going to create a route with a path to forward slash old. I'm going to have a render method here, where I'm simply going to return a redirect.
+
+We don't need our from any longer since this won't render unless we're at this path. This also means we can get rid of this switch requirement. Save this. We're at home. If I go to old, it redirected me to new. If I hit back, everything is working just fine. This method also allows us to carry over any other parameters from the URL that we might have had, so I'm going to set these guys up.
+
+Let's say this is going to be old slash one, two, three. This will be new slash four, five, six. I'm going to say that the new path takes in a string parameter. We'll get that out of our match data. I'm going to go ahead and break this out a little bit.
+
+Here after new we'll just output our match.params.string. Then in our old redirect path we'll follow the same pattern, so we've got our string there. We get our match data here. We'll just interpolate NES six string template. Here we'll just pass in her match.params.string. OK, that looks good. I'm going to save this.
+
+We're on our home. When I go to old, which is just going to be forward slash one, two, three as the string, we get our new one, two three, and our new four, five, six is working just fine as well. We can also do a redirect based on some other bit of data. Let's say I'm going to create a path here called protected.
+
+What I'm going to return, I'm going to say we have a value for logged in. If it's true we're going to say, "Welcome to the protected page." If it's false I'm going to return a redirect and we'll just use the same setup here. We'll go to forward slash new, forward slash login.
+
+Let's go and create that link. Protected and protected, switches defined, logged in. I did not create that value for logged in, so I go and set that up now. Just make a constant variable here and we'll set that to false.
+
+Now when I go to protected I'm expecting to be redirected to new forward slash login. We've got that there. If I go ahead and set this to true and I go to protected, we get, "Welcome to the protected page."
