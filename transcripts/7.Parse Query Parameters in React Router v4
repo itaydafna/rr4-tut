@@ -1,0 +1,25 @@
+Parse Query Parameters in React Router v4
+
+React Router v4 ignores query parameters entirely. That means that it is up to you to parse them so that you can use that additional information as required. There are several strategies for doing this that we will look at.
+
+To get a look at how we deal with query strings in React Router, I've got a very simple links component here with two links, each going to the forward slash path. The first one in line with the two prop and the second one passing an object to the two prop.
+
+Then here in our app component we've got our link component dropped in and a single route with the path of forward slash where we're simply rendering a paragraph tag with the word root in it. We can see that here both of those links are working.
+
+Let's go ahead and append a query string to this in line link. We're going to say question mark ID equals one, two, three. Save that. When I click on it we get that in the URL, but nothing is going to happen on the page.
+
+We are going to take a look at our match as well as our location data. We'll just go ahead and stringify those here. There's our match data and our location data. Save that.
+
+We're on the query string ID equals one, two, three route. Here's our match data. We've got our path, our URL. We don't have any params. In our location data we've got our path name. We've got this search field. Inside of that we've got our query string with a question mark, so question mark ID equals one, two, three.
+
+Let's try this with the object version. I'm going to go ahead and do this in the path name. I'm going to say forward slash question mark ID equals. This one I'll do four, five, six. Try that in the browser, click on the link, and you can see that the path has become the entire thing with the query string.
+
+In order to get this guy over to the search field, which is really where we want to have it to isolate it away from the path name, I'm going to add a search field here to our link to object. I'm just going to say ID equals four, five, six. It's important to note that I did not have a preceding question mark on that string.
+
+I'm going to save that. I'm going to click on our link and you can see that our path name is now just forward slash and our search field has question mark ID equals four, five, six. React Router has added that question mark to the query string for us.
+
+At this point React Router no longer really cares that much about our query string and it's not going to do any parsing for us. There's a number of libraries you can pull down from Node Package Manager to parse query strings for you.
+
+However, I thought it would be cool to just go ahead and take a look at a new and emerging web standard that we can use right now at least in Chrome.
+
+Here I'm going to say new URL search params. I'm going to pass into that our location.search value. Then from that I'm going to say get ID. Save that. We can see we've got our match. We've got our path. Here is our ID out of our query string. If I go over to the in line version, our ID equals one, two, three.
