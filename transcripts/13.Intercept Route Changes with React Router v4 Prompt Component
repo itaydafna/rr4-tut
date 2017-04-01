@@ -1,0 +1,19 @@
+Intercept Route Changes with React Router v4 Prompt Component
+
+If a user has entered some input, or the current Route is in a “dirty” state and we want to confirm that data will be lost, React Router v4 provides a Prompt component to interrupt the Route transition and ask the user a question.
+
+A common use case for intercepting a route change is when that route change which cause our user to lose some data. To illustrate that, I've got two links here on the page, each going to / and /form, and then rendering this home or form component at the appropriate route.
+
+We can see that here in the browser on the route URL, we have our home component, and on the form URL, we have our form component. Now to get started, I'm going to replace this form component with a react-class component, since we're going to be using state.
+
+We'll set our state equal to dirty, with a value of false. That's going to represent the fact that our form has not been changed. I'm going to have a setDirty method that will simply set our state of dirty to true.
+
+Now in the render method, we're going to return everything wrapped up in a div, and we're going to have an input field. On its input event, we're just going to call this.setDirty. When something changes in our input field, our state of dirty will become true.
+
+I'm going to go ahead and save that, we're here on our form, and just so that we can see that, I'm going to add an H1 here, and say form. We're here on our form, and when I type in this guy and then change our route, nothing's going to happen.
+
+To intercept that route based on the fact that our form is now dirty, we're going to bring in the prompt component from React Router, and we're going to add that to our form component. We've got that right there.
+
+This is going to take in two props, one of them is going to be message, this is the message we want to show the user before we leave this route. I'll just say, "Data will be lost." Now when we want to decide when we want that to happen, we can use the when prop and just pass in some Boolean value or a function that returns a Boolean value. In our case, we're just going to say this.state.dirty.
+
+Save that, and now here on our form when we type, our form is now dirty, our state of dirty is true, so when I try to go to home, I get our message that the data will be lost. If I say cancel, we've canceled that route transition. If I do that again and say OK, we've allowed the route transition and notified the user that that data has been lost.
