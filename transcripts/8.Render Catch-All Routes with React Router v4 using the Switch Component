@@ -1,0 +1,13 @@
+Render Catch-All Routes with React Router v4 using the Switch Component
+
+There are many cases where we will need a catch-all route in our web applications. This can include 404-style routes when nothing is match or other use cases where where we receive an invalid route in React Router v4.
+
+In our application, I'm going to create a link for contact, and it's going to link to a path that doesn't exist, forward slash contact. When I run this, we have our home route, we have our about route, and when I go to contact, nothing is going to runner.
+
+One feature of react-router that we can employ here, is the fact that a route without a path will always render. Here I'm creating a route with no path, I'm just going to say, "Page not found." I save that, and we're here on this contact route which we haven't defined, we get our page not found.
+
+However, if I go to about or home, we're still getting our page not found, because that route is always going to render.
+
+To solve that, we can bring in the switch component. To use the switch component, we're going to wrap our route in that component, these routes are now children of that component, and what switch will do is only render the first route that matches. If I save this, here on our home route we just get our home. On about, we just get about, and on contact we've got our page not found.
+
+That would work for any route. If I just make up some stuff here, save it, and we go to that route, we're still going to get our page not found, and the rest of our routes are going to render just fine.
