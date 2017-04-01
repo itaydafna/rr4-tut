@@ -1,0 +1,26 @@
+Style a Link that is Active with NavLink in React Router v4
+
+We often need to be able to apply style to navigation links based on the current route. In React Router v4 you can easily accomplish this with the NavLink component. In this lesson, we will step through three ways to accomplish styling links through the use of an active class with the NavLink component.
+
+
+is an extended version of the component from React Router. To illustrate this, I've got a few routes here, and then I've got some links, each linking to the specific route. Over here on the right, I've got a Home, About, and Contact component.
+
+I'm going to go ahead and swap out the component for . If I save that, everything is going to work as it did. These are fairly identical at this point. The difference is that allows us to identify our current route and decide if we want this link to have an active state.
+
+The simplest way to get started with that is to add an activeClassName prop. I'm going to set that to active, which I'm going to pull in from this app.css where I've styled all anchor tags to have a margin of 5, to be a color of blue, and if they have this activeClass, they'll be a color of red.
+
+You can see over here in the browser that the Home link is in fact red. If we take a look at that in the element panel, we can see it has been given a class of active. I'm going to go ahead and try to copy that over to our next , to the About route. I'm going to save this.
+
+We're here on the Home link. If I go to About, you can see that both of them have actually received that class of active. That's because, unlike the component, is aware of a route and treats the route or qualifies the route the same way that the component does.
+
+To match our components, we simply need to include any qualifiers that we may have had in our route in our . Now we can see that when we run our About route, our About is active. If we go to out Home route, our Home link is active.
+
+Another way we can do this is by directly styling the component. We can do that with activeStyle. We're going to interpolate a style object here, so I'm going to give it a color of green, save that. When we go to the About link, we can see that the About link has actually been given a style of color of green right on the HTML element.
+
+There's a third way we can do this. I'm going to go ahead and carry over this activeClassName to our Contact . We can manually identify whether or not we want this activeClassName to be applied by using the isActive prop. Into that we're going to pass a function, so I'm going to call this the isActive : func, going to break this out a little bit.
+
+We'll go ahead and create that function. The isActive function is going to take in the matched data as well as the location data. We're going to go ahead and log out both of those. Then we're simply going to return the match. If it is a match, and we have that matched data, it's going to be returning true. I'm going to save this. I'm going to open up a console here.
+
+Right now, we're on the About path. We can see that the isActive function has actually fired, the match was null, the location information is there. If we go to Contact, it's fired again, but now we have a match. That tells us that this isActive method is going to fire each and every time that the s are rendered.
+
+Each and every time the route is changed, the is going to run our isActive function to find out if we qualify this route as requiring the activeClassName. That means if we return false here, the Contact will never achieve the activeClassName.

@@ -1,0 +1,19 @@
+Use URL Parameters with React Router v4
+
+URLs can be looked at as the gateway to our data, and carry a lot of information that we want to use as context so that the user can return to a particular resource or application state. One way to achieve this is through the use of URL parameters that include important data right in the URL of the route that gets matched in React Router v4.
+
+URL parameters are a method by which we can extract parameters from our URL at our routes. I've got a very simple route here, to/page. In our render method, we are returning an with the word Page. If I go to /page, we can see that in the browser.
+
+To convert this /page into a parameter called page, I'm simply going to add a colon right before that value. To get that out of our route, I'm going to use our match data, so I'll pass that into a render method. Then right here after page, I'm going to say match.params.page. I'm also going to say, "If we don't have that, I'm going to say Home."
+
+I'm going to save that, and we've got our param of page. If I go to something like /react, we can see our param of page equals react. If I go to our root URL, nothing is going to render right now. That's because at this point this page value, in order for this route to be a match, needs to be present.
+
+If I want to make that an optional parameter, I can simply append a question mark at the end of that parameter string. If I save this, we can see that our optional page parameter was not provided, and therefore we've rendered Home.
+
+We could expand on that and represent a subdirectory here, so I'm going to say /:subpage, and then in our JSX I'm going to break this out a little bit what subpage, and here we'll interpolate match.params.subpage. We'll save that.
+
+We're going to get nothing at this point because I didn't make subpage optional, so I'm going to go ahead and do that now. We've got our Home, since the page parameter wasn't provided. Subpage is null at this point because the subpage parameter wasn't provided.
+
+If I go to /react, we're going to get our page value. If I go to /react/router, we're going to get our page parameter of react and our subpage parameter of router.
+
+We're not limited to representing these as subdirectories only. What I'm going to do is I'm going to get rid of this middle forward slash. I'm going to replace it with a dash. Now our route is /page-subpage. I'll save that. We're not going to get anything right now, but if I change this path in our browser to /react-router, our page parameter is react and our subpage parameter is router.
