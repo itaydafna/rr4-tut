@@ -1,0 +1,17 @@
+Run the React Router v4 Examples with Create React App
+
+React Router v4 doesn’t require a lot of configuration to run. The core examples will run out of the box with Create React App. In this lesson, you will create an application and get React Router v4 up and running.
+
+To get started with React Router, we're going to be using create-react-app. The command to install that is going to be npm install create-react-app and then throw in a tag -g to install that globally. I've already got that installed, so I'm going to go ahead and use it here to set up our applications.
+
+I'm going to say create-react-app. I'm going to give it a directory of rr4 for React Router v4. Now that that's installed, I'm going to cd into our directory. I'm going to go ahead and open that up in our text editor.
+
+The first thing we're going to do is get rid of some things here in the source directory. We're going to get rid of the test, the index.css, and the logo. I'm going to go ahead and delete these guys. We're not going to need them. Then, in our App.css, I'm going to go ahead and clear that out for now.
+
+Here we're going to ahead and recreate this guy. We're going to import React from 'react', create a quick a little stateless function here, let's return an that says Hello World, and we'll export that by default.
+
+The next thing we want to do is install react-router. It's going to be npm i react-router-dom. This is a version of React Router that is specifically meant for working with the DOM in a browser. I'm going to use the @next variable here to get the latest version of react-router-dom. I'm going to save that to our devDependencies.
+
+We can run our application by running npm start. You see that's loaded up here. It looks like I left something in that index.js, this index.css reference, so I'll save that. As soon as I save it, we get a browser refresh. If we look in our package.json, we can see we have react-router-dom installed.
+
+If we jump over to our app, we can now import whatever we want from react-router-dom. I'm going to import something called . We're not going to worry about using that right now, but I'll just log it out so we know we have it. Open up the devtools, and we can see that is in fact available to us.
