@@ -1,0 +1,43 @@
+Understand the Difference Between the React Router v4 Router Types
+
+React Router introduces several different router types that are useful for various environments where routing is typically needed. The BrowserRouter, NativeRouter, StaticRouter, HashRouter, and MemoryRouter are all available to suit your needs and requirements. Understanding when and why to use the variety of routers is an important part of understanding React Router v4.
+
+React Router provides us with a number of preconfigured routers that we can use, the most common of which is browser router. I've imported that from our React Router DOM library. I've got a component here called links routes which has a couple of React Router links as well as React Router routes tied to those links.
+
+We're going to create a new component here called browser router app. We're going to output a browser router component. Inside of that we're going to have our links routes component. Then we'll go ahead and export that by default.
+
+Here in the browser we have our home link and our about link. Everything is working just fine. This router is meant to be used in environments where we can support the HTML5 history API.
+
+Along with that we do get a couple options here, so one is force refresh. This is meant to return a Boolean value.
+
+I'm actually going to set it to a function and we're going to call that directly here. It's only meant to be called one time. Now we're going to create that. Of course we need to eventually return a true or false here. I'm going to return true, but I'm also going to log out a new date string.
+
+Over here in the browser I'm going to load up our dev tools. We can see that we've called force refresh which has returned the value of true. We can see the time here is 0:33:51.
+
+If I go to about, our time has updated to 0:34:03 because we've actually completely refreshed the browser, which means that this force refresh was called again. If I update that return value to false we can see the time here is 0:34:18. When I change our route to home, the time has not changed because we have not completely rerendered our router.
+
+If we're not in a position to support the HTML5 history API, we can use something called the hash router. I'm going to come down here and I'm going to go ahead and copy our browser router app. I'm going to kill off this force refresh. I'm going to call this guy hash router app. We're just outputting our links routes component. We're going to export by default our hash router app.
+
+Now if I go to the home URL we can see that our route is forward slash hashtag forward slash. If I go to about we get about appended to the same URL. One option that's unique to the hash router is the hash type prop. Its default is slash, which is what we're seeing right now. It's a hashtag followed by a slash, followed by whatever the path is to. Our route URL becomes just forward slash after the hash.
+
+We can also do no slash. Now our route simply becomes forward slash hashtag. If we go to about, it becomes hashtag about. The one other one we can do is called hash bang, which adds an exclamation point after the hashtag. This was widely used a while back for a search engine optimization in Google. I'm not entirely sure that that's still supported.
+
+Another router that we can use is called the memory router. This is an entirely in memory router. It's mostly useful for testing. I'm going to copy our hash router app, get rid of our hash type, and update all of these guys to be our memory router and memory router app. I'm going to go back to the route URL. We're on the home path.
+
+If I go to about everything is rendering just fine, but the URL in our browser is not changing. That's why this makes it an ideal router for testing, because it's not dependent on the actual URL in an actual browser. We've got a few options here, starting with initial entries where we can pass in an array that represents our current history stack in our browser, in our virtual browser in this case.
+
+I'm just going to set up two initial entries, one for forward slash and one for forward slash about. Then I'm going to add an initial index. I'm going to set that equal to one. One representing the one position in our initial entries is going to represent this forward slash about.
+
+I'm going to go ahead and jump to home. Now that it's saved we can see that it's actually on the about path, even though we don't have that in our route. If I go ahead and reload it, it's still on the about path. If I wanted to switch that to our zero entry or forward slash entry, we can see it's on home. One more time I'll go to the about path or the one entry and we can see we're on about.
+
+The last one we'll take a look at is called static router. This is going to be a little bit difficult to explain here in a client side environment, but this is really meant for server side rendering.
+
+I'm going to go ahead and copy our memory router app. I'm going to get rid of our initial index and entries. We'll rename all these guys to static router and static router app. I'm going to go ahead and save that.
+
+For the most part everything is going to seem the same, very similar to memory router's initial index. We can set our location manually. I'm going to say that equals forward slash about.
+
+Because it's meant for a server environment, I need to bring in this context prop which really represents the URL that our HTTP server would have received. That would be our actual URL and our location would be whatever we want it to be in accordance with the routes that we've defined.
+
+In this case when I save it I'm expecting it to go ahead and land on the about URL without having rendered that in the address bar. Here we are on the about URL without having rendered that in the address bar. Changing it does nothing again because this is meant to be server side.
+
+There is one more router that React Router provides and that's called native router. However, that's meant for a iOS or Android environment where we're developing with React Native so that will have to be a lesson for another time.Ï
