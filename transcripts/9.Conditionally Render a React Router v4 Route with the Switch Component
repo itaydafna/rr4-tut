@@ -1,0 +1,11 @@
+Conditionally Render a React Router v4 Route with the Switch Component
+
+We often want to render a Route conditionally within our application. In React Router v4, the Route components match the current route inclusively so a “stack” of Routes will all be processed. To render a single Route exclusively we can wrap them in the Switch component to render the first Route that matches our current URL.
+
+Here in our application, we've got a series of links, each pointing to routes that we've defined. We can go ahead and go to the Home, About, Contact, and everything's working just fine. Let's say that I want to create another route here that is going to be dynamic.
+
+I'm going to pass in itemID, break this out a little bit. What I want to do is, out of the match data, I want to go ahead and output item, and then we'll draw up the match.params.itemID right there. We're here on our Home path, everything's fine.
+
+I'm going to go to About, and what we'll see is that the About route is rendering, but the itemID route is rendering as well, because it's considering the About parameter in the URL to be our itemID. To solve that, we can bring in the switch component. Then we'll wrap our routes in the switch component, which will only render the first route that is a match.
+
+Now if we go to our home, everything's working, About, everything's working, and Contact, everything is working. If we want to go ahead and go to itemID 123456, we have our itemID.
