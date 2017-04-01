@@ -1,0 +1,15 @@
+Use Regular Expressions with Routes with React Router v4
+
+We can use regular expressions to more precisely define the paths to our routes in React Router v4.
+
+Using regular expressions, we can more precisely validate our route parameters. Here, on the page, we've got a very simple route with a parameter of a as well as a parameter of b. Then in the JSX, I'm simply outputting those. If I go to /a/b, we can see our param of a and our param of b.
+
+However, let's say that I only want to validate a if it is a number. Right here, after the parameter definition, in parenthesis I can use regular expression to say that I want this to be any number of digits. When I save that now, our path is not going to match, but if I change our a parameter to 1, 2, 3, we can see our a parameter has been validated.
+
+If I wanted to say, "Well, that needs to be two digits" and save that, and here I'll change that 02, we can see again our parameter of a has been validated. We can go further with this.
+
+If I wanted this to be similar to a date, so I could say it's two digits followed by a dash followed by two digits followed by a dash followed by four digits. Save that. Now here we're going to do 02-28-2017. We can see that our a parameter again matches the specified regular expression.
+
+To take this a little bit further, let's break this out a little bit. Our b path, let's go ahead and get rid of this forward slash. We've still got our b parameter. I'm going to say that it needs to equal a dot followed by any number of alpha characters. I'm going to save that.
+
+Clearly, this isn't going to match, but if I changed this path to our date path .html, everything is going to work.
