@@ -1,0 +1,17 @@
+Render Nested Routes with React Router v4
+
+With React Router v4 the entire library is built as a series of React components. That means that creating nested Routes is as simple as creating any other nested element in your application.
+
+When we want to work with nested routes in our React Router 4 application, since routes in React Router 4 are components, we very literally just nest the routes where we want them to appear.
+
+To illustrate this, I've got two simple routes, one to our root path, and one to forward slash menu, each rendering a component at its route. We're here on the home route, and we're rendering our home component.
+
+If I go to forward slash menu we get our menu component. I'm going to go ahead and create a couple links, so the first one will be to our forward slash path, I'll just say home, and the next one will be to our forward slash menu path, and we'll just have a string of menu in there.
+
+If I save that, our links should be working. I can go to home, and I can go to menu, all that's working great. Now here in our menu component, I'm going to wrap our JSX in a single node, and then I want to output some additional links that are going to link to our nested routes.
+
+Our first one will say it's to forward slash menu forward slash food, we'll just say food in there. Then here, we'll say drinks in our second link, and our third link will say this is for sides. Let's go ahead and try that out. We're on our home route. If we go to menu we get our sub navigation, and when we click on those, we do see our URL firing, but clearly, we're not rendering anything at that URL.
+
+To do that, we can just nest our route right here in our menu component. I'm going to create a new route, its path will be /menu and I'm going to parameterize, we'll call this section, and we'll just do our render inline right here. I may go ahead and break this out a little bit. We'll get our match data from our render method, and we'll just output an h2 with match.params.section.
+
+I'll save that, and here in our home, we get our home. We go to menu, we get our menu with our sub nav, and when we click on one of those guys, we get our nested route rendering.
